@@ -1,0 +1,28 @@
+FROM lacledeslan/gamesvr:srcds.linux
+
+MAINTAINER Laclede's LAN <contact@lacledeslan.com>
+
+ENV SERVER_NAME="gamesvr-svencoop.linux"
+
+WORKDIR /app/bin/
+
+# Install Sven Co-op
+RUN useradd \
+		--shell /bin/bash \
+		SVENCOOP &&\
+	# Create output directory &&\
+		mkdir /app/bin --parents &&\
+	# Download &&\
+		/app/steamcmd/steamcmd.sh \
+			+login anonymous \
+			+force_install_dir /app/bin/ \
+			+app_update 276060 validate \
+			+quit &&\
+	# Set permissions &&\
+		chown -R SVENCOOP /app/bin
+	
+COPY ./dist/ /app/bin/
+
+USER SVENCOOP
+
+CMD ["/bin/bash"]
