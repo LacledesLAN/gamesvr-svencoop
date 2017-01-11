@@ -1,1 +1,1 @@
-# gamesvr-svencoop
+# gamesvr-srcds-svencoop

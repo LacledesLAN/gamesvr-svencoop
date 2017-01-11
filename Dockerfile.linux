@@ -1,8 +1,8 @@
-FROM lacledeslan/gamesvr:srcds.linux
+FROM lacledeslan/gamesvr-srcds:linux
 
 MAINTAINER Laclede's LAN <contact@lacledeslan.com>
 
-ENV SERVER_NAME="gamesvr-svencoop.linux"
+ENV SERVER_NAME="gamesvr-srcds-svencoop:linux"
 
 WORKDIR /app/bin/
 
