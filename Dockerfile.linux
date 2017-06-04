@@ -1,10 +1,13 @@
 FROM lacledeslan/gamesvr-srcds:linux
 
-MAINTAINER Laclede's LAN <contact@lacledeslan.com>
+LABEL maintainer "Laclede's LAN <contact@lacledeslan.com>"
 
 ENV SERVER_NAME="gamesvr-srcds-svencoop:linux"
 
-WORKDIR /app/bin/
+HEALTHCHECK NONE
+
+# Copy files (if any) from the build-cache
+COPY ./build-cache/ /app/bin/
 
 # Install Sven Co-op
 RUN useradd \
@@ -20,9 +23,9 @@ RUN useradd \
 			+quit &&\
 	# Set permissions &&\
 		chown -R SVENCOOP /app/bin
-	
-COPY ./dist/ /app/bin/
 
 USER SVENCOOP
+
+WORKDIR /app/bin/
 
 CMD ["/bin/bash"]
