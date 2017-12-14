@@ -1,5 +1,6 @@
-/.dockerignore eol=lf
-/Dockerfile.linux eol=lf
-/Dockerfile.windows eol=crlf
-/LICENSE eol=lf
-/README.md eol=lf
+# Set default behavior to automatically normalize to linux line endings.
+* text=auto eol=lf
+
+# Windows specific
+/windows/* text=auto eol=crlf
+/windows/*/* text=auto eol=crlf

@@ -1,10 +1,10 @@
 ## Contributing
 
-First off, thank you for considering contributing to `gamesvr-srcds-svencoop`. It's people like you that make Laclede's LAN such a great community.
+First off, thank you for considering contributing to `gamesvr-svencoop`. It's people like you that make Laclede's LAN such a great community.
 
 ### Did you find a bug or have questions?
 
-Let us know by using [GitHub issues](https://github.com/LacledesLAN/gamesvr-srcds-svencoop/issues) on this repository.
+Let us know by using [GitHub issues](https://github.com/LacledesLAN/gamesvr-svencoop/issues) on this repository.
 
 ### Have a fix or feature?
 
