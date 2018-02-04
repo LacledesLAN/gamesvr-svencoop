@@ -11,7 +11,7 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc1 libssl1.0.0 libssl1.0.0:i386 libcurl3:i386 &&`
+        ca-certificates lib32gcc1 libssl1.0.0 libssl1.0.0:i386 libcurl3:i386 screen &&`
     apt-get clean &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
 
