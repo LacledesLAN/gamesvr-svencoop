@@ -1,6 +1,12 @@
 # escape=`
 FROM lacledeslan/steamcmd:linux as svencoop-builder
 
+# Copy cached build files (if any)
+COPY ./build-cache /output
+
+# Download Sven Co-Op Dedicated Server
+RUN /app/steamcmd.sh +login anonymous +force_install_dir /output +app_update 276060 validate +quit;
+
 #=======================================================================
 FROM debian:jessie-slim
 
@@ -11,11 +17,12 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc1 libssl1.0.0 libssl1.0.0:i386 libcurl3:i386 screen &&`
+        ca-certificates lib32gcc1 libstdc++6 libstdc++6:i386 libssl1.0.0:i386 locales locales-all tmux &&`
     apt-get clean &&`
+    echo "LC_ALL=en_US.UTF-8" >> /etc/environment &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
 
-#libcurl3:i386, lib32gcc1 procps screen libssl1.0.0
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 LABEL maintainer="Laclede's LAN <contact @lacledeslan.com>" `
       com.lacledeslan.build-node=$BUILDNODE `
@@ -31,35 +38,20 @@ RUN useradd --home /app --gid root --system SvenCoOp &&`
     mkdir -p /app/ll-tests &&`
     chown SvenCoOp:root -R /app;
 
-## Sven Co-Op Dedicated Server is so large we can't reliably use multi-stage builds in docker cloud
+COPY --chown=SvenCoOp:root --from=svencoop-builder /output /app
 
-# Copy cached build files (if any)
-COPY ./build-cache /app
+COPY --chown=SvenCoOp:root ./ll-tests /app/ll-tests
 
-#Pull in SteamCMD
-COPY --from=svencoop-builder /app /app/steamcmd
-
-## Add in tests
-COPY ./ll-tests /app/ll-tests
-
-RUN chmod +rx /app/ll-tests/*.sh &&`
-    chmod +rwx /app/ll-tests &&`
-    chown SvenCoOp:root -R /app/ll-tests;
+RUN chmod +x /app/ll-tests/*.sh;
 
 USER SvenCoOp
 
-# Install Sven Co-Op Dedicated Server using SteamCMD
-RUN echo $'\n\nDownloading Sven Co-Op Dedicated Server via SteamCMD' &&`
-        /app/steamcmd/steamcmd.sh `
-            +login anonymous `
-            +force_install_dir /app `
-            +app_update 276060 validate `
-            +quit;
-
-#RUN echo $'\n\nLinking steamclient.so to prevent srcds_run errors' &&`
-#        mkdir --parents /app/.steam/sdk32 &&`
-#        ln -s /app/bin/steamclient.so /app/.steam/sdk32/steamclient.so;
+RUN echo $'\n\nLinking steamclient.so to prevent srcds_run errors' &&`
+        mkdir --parents /app/.steam/sdk32 &&`
+        ln -s /app/steamclient.so /app/.steam/sdk32/steamclient.so
 
 WORKDIR /app
+
+CMD ["/bin/bash"]
 
 ONBUILD USER root

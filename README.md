@@ -11,7 +11,7 @@ docker pull lacledeslan/gamesvr-svencoop
 
 **Run Interactive Server**
 ```
-
+docker run svends_run -it --rm lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1
 ```
 
 **Run Self Tests**
