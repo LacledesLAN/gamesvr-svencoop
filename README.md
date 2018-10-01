@@ -11,19 +11,24 @@ This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its c
 [![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-svencoop.svg)](https://microbadger.com/images/lacledeslan/gamesvr-svencoop "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-svencoop.svg)](https://microbadger.com/images/lacledeslan/gamesvr-svencoop "Get your own image badge on microbadger.com")
 
-**Download**
+### Download
+
 ```
 docker pull lacledeslan/gamesvr-svencoop;
 ```
 
-**Run Interactive Server**
-```
-docker run svends_run -it --rm lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
-```
+### Run Self Tests
 
-**Run Self Tests**
+The image includes a test script that can be used to verify its contents. No changes or pull-requests will be accepted to this repository if any tests fail.
+
 ```
 docker run -it --rm lacledeslan/gamesvr-svencoop ./ll-tests/gamesvr-svencoop.sh;
+```
+
+### Run Interactive Server
+
+```
+docker run svends_run -it --rm lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
 ```
 
 ## Getting Started with Game Servers in Docker
