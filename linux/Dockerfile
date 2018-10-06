@@ -17,7 +17,7 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc1 libstdc++6 libstdc++6:i386 libssl1.0.0:i386 locales locales-all tmux &&`
+        ca-certificates lib32gcc1 libstdc++6 libstdc++6:i386 libssl1.0.0:i386 locales locales-all tmux zlib1g:i386 &&`
     apt-get clean &&`
     echo "LC_ALL=en_US.UTF-8" >> /etc/environment &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
