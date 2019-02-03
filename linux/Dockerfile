@@ -8,7 +8,7 @@ COPY ./build-cache /output
 RUN /app/steamcmd.sh +login anonymous +force_install_dir /output +app_update 276060 validate +quit;
 
 #=======================================================================
-FROM debian:jessie-slim
+FROM debian:stretch-slim
 
 ARG BUILDNODE=unspecified
 ARG SOURCE_COMMIT=unspecified
@@ -17,7 +17,7 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc1 libstdc++6 libstdc++6:i386 libssl1.0.0:i386 locales locales-all tmux zlib1g:i386 &&`
+        ca-certificates lib32gcc1 libstdc++6 libssl1.1:i386 libstdc++6:i386 locales locales-all tmux zlib1g:i386 &&`
     apt-get clean &&`
     echo "LC_ALL=en_US.UTF-8" >> /etc/environment &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
