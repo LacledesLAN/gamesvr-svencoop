@@ -40,7 +40,7 @@ RUN useradd --home /app --gid root --system SvenCoOp &&`
 
 COPY --chown=SvenCoOp:root --from=svencoop-builder /output /app
 
-COPY --chown=SvenCoOp:root ./ll-tests /app/ll-tests
+COPY --chown=SvenCoOp:root ./dist/ll-tests/gamesvr-svencoop.sh /app/ll-tests/gamesvr-svencoop.sh
 
 RUN chmod +x /app/ll-tests/*.sh;
 
