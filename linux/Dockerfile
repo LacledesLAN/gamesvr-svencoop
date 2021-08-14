@@ -46,6 +46,9 @@ RUN chmod +x /app/ll-tests/*.sh;
 
 USER SvenCoOp
 
+# Fix for "Unable to initialize Steam" - https://github.com/LacledesLAN/gamesvr-svencoop/issues/2
+RUN echo 225840 > /app/steam_appid.txt
+
 RUN echo $'\n\nLinking steamclient.so to prevent srcds_run errors' &&`
         mkdir --parents /app/.steam/sdk32 &&`
         ln -s /app/steamclient.so /app/.steam/sdk32/steamclient.so
