@@ -6,14 +6,13 @@ Sven Co-op (abbreviated as SC) is a co-op variation of the 1998 first-person sho
 
 This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its contents are intended to be bare-bones and used as a stock server. For examples of building a customized server from this Docker image browse its related child-project [gamesvr-svencoop-freeplay](https://github.com/LacledesLAN/gamesvr-svencoop-freeplay). If any documentation is unclear or it has any issues please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-
 ## Linux
-[![](https://images.microbadger.com/badges/version/lacledeslan/gamesvr-svencoop.svg)](https://microbadger.com/images/lacledeslan/gamesvr-svencoop "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/image/lacledeslan/gamesvr-svencoop.svg)](https://microbadger.com/images/lacledeslan/gamesvr-svencoop "Get your own image badge on microbadger.com")
+
+[![linux/amd64](https://github.com/LacledesLAN/gamesvr-svencoop/actions/workflows/build-linux-image.yml/badge.svg?branch=master)](https://github.com/LacledesLAN/gamesvr-svencoop/actions/workflows/build-linux-image.yml)
 
 ### Download
 
-```
+```shell
 docker pull lacledeslan/gamesvr-svencoop;
 ```
 
@@ -21,13 +20,13 @@ docker pull lacledeslan/gamesvr-svencoop;
 
 The image includes a test script that can be used to verify its contents. No changes or pull-requests will be accepted to this repository if any tests fail.
 
-```
+```shell
 docker run -it --rm lacledeslan/gamesvr-svencoop ./ll-tests/gamesvr-svencoop.sh;
 ```
 
 ### Run Interactive Server
 
-```
+```shell
 docker run svends_run -it --rm lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
 ```
 

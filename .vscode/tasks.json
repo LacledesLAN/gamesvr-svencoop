@@ -6,7 +6,7 @@
         {
             "label": "Linux - Build Image",
             "type": "shell",
-            "command": "docker pull lacledeslan/steamcmd:linux; docker pull debian:stretch-slim; docker build -f ./linux.Dockerfile -t lltest/gamesvr-svencoop --no-cache --build-arg BUILDNODE=$env:computername .;",
+            "command": "docker pull lacledeslan/steamcmd:linux; docker pull debian:bullseye-slim; docker build --rm -f ./linux.Dockerfile -t lltest/gamesvr-svencoop --no-cache --build-arg BUILDNODE=$env:computername .;",
             "group": "build",
             "problemMatcher": [],
             "promptOnClose": true
