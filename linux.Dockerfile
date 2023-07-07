@@ -5,7 +5,7 @@ FROM lacledeslan/steamcmd:linux as svencoop-builder
 COPY ./build-cache /output
 
 # Download Sven Co-Op Dedicated Server
-RUN /app/steamcmd.sh +login anonymous +force_install_dir /output +app_update 276060 validate +quit;
+RUN /app/steamcmd.sh +force_install_dir /output +login anonymous +app_update 276060 validate +quit;
 
 #=======================================================================
 FROM debian:bullseye-slim
