@@ -17,7 +17,9 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc-s1 libstdc++6 libssl1.1:i386 libstdc++6:i386 locales locales-all tmux zlib1g:i386 jq curl &&`
+        ca-certificates lib32gcc-s1 libstdc++6 libssl1.1:i386 libstdc++6:i386 locales locales-all tmux zlib1g:i386 &&`
+        # Agones Dependencies (https://github.com/LacledesLAN/gamesvr-svencoop/pull/40)
+            curl jq &&`
     apt-get clean &&`
     echo "LC_ALL=en_US.UTF-8" >> /etc/environment &&`
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*;
