@@ -1,5 +1,5 @@
 # escape=`
-FROM lacledeslan/steamcmd:linux as svencoop-builder
+FROM lacledeslan/steamcmd:linux AS svencoop-builder
 
 # Copy cached build files (if any)
 COPY ./build-cache /output
@@ -35,7 +35,7 @@ LABEL maintainer="Laclede's LAN <contact @lacledeslan.com>" `
       org.label-schema.description="Sven Co-op Dedicated Server" `
       org.label-schema.vcs-url="https://github.com/LacledesLAN/gamesvr-svencoop"
 
-# Set up Enviornment
+# Set up Environment
 RUN useradd --home /app --gid root --system SvenCoOp &&`
     mkdir -p /app/ll-tests &&`
     chown SvenCoOp:root -R /app;

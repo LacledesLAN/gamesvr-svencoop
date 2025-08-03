@@ -2,7 +2,7 @@
 
 Sven Co-op (abbreviated as SC) is a co-op variation of the 1998 first-person shooter Half-Life. The game, initially released as a mod in January 1999, enables players to play together on online servers to complete levels, many which are based on the Half-Life universe but include other genres. The standalone release, available free of charge, representing version 5.0 of the mod, was released in January 2016.
 
-![Sven Co-op Screenshot](https://raw.githubusercontent.com/LacledesLAN/gamesvr-svencoop/master/.misc/screenshot1.jpg "Sven Co-op Screenshot")
+![Sven Co-op Screenshot](https://raw.githubusercontent.com/LacledesLAN/gamesvr-svencoop/master/Documentation/screenshots/screenshot01.jpg "Sven Co-op Screenshot")
 
 This repository is maintained by [Laclede's LAN](https://lacledeslan.com). Its contents are intended to be bare-bones and used as a stock server. For examples of building a customized server from this Docker image browse its related child-project [gamesvr-svencoop-freeplay](https://github.com/LacledesLAN/gamesvr-svencoop-freeplay). If any documentation is unclear or it has any issues please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
@@ -27,7 +27,7 @@ docker run -it --rm lacledeslan/gamesvr-svencoop ./ll-tests/gamesvr-svencoop.sh;
 ### Run Interactive Server
 
 ```shell
-docker run -it --rm --net=host lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
+docker run -it --net=host lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
 ```
 
 ## Getting Started with Game Servers in Docker
