@@ -20,7 +20,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4.0.0
       - name: Pull Latest Linux Base Image
-        run: docker pull debian:stretch-slim
+        run: docker pull debian:trixie-slim
       - name: Build Linux Image
         uses: docker/build-push-action@v7.0.0
         with:

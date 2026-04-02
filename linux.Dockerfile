@@ -8,7 +8,7 @@ COPY ./build-cache /output
 RUN /app/steamcmd.sh +force_install_dir /output +login anonymous +app_update 276060 validate +quit;
 
 #=======================================================================
-FROM debian:bullseye-slim
+FROM debian:trixie-slim
 
 ARG BUILDNODE=unspecified
 ARG SOURCE_COMMIT=unspecified
@@ -17,7 +17,7 @@ HEALTHCHECK NONE
 
 RUN dpkg --add-architecture i386 &&`
     apt-get update && apt-get install --no-install-recommends -y `
-        ca-certificates lib32gcc-s1 libstdc++6 libssl1.1:i386 libstdc++6:i386 locales locales-all tmux zlib1g:i386 `
+        ca-certificates lib32gcc-s1 libstdc++6 libstdc++6:i386 locales locales-all tmux zlib1g:i386 `
         # Agones Dependencies (https://github.com/LacledesLAN/gamesvr-svencoop/pull/40)
             curl jq &&`
     apt-get clean &&`

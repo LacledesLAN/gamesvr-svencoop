@@ -27,7 +27,7 @@ docker run -it --rm lacledeslan/gamesvr-svencoop ./ll-tests/gamesvr-svencoop.sh;
 ### Run Interactive Server
 
 ```shell
-docker run -it --net=host lacledeslan/gamesvr-svencoop ./svends_run -num_edicts 3072 +sv_lan 1;
+docker run -it --net=host lacledeslan/gamesvr-svencoop /app/svends_run -num_edicts 3072 +sv_lan 1;
 ```
 
 ## Getting Started with Game Servers in Docker
